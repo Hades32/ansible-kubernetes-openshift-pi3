@@ -2,8 +2,8 @@
 - name: Setup Raspberry Pi Base system
 
   hosts: pis
-  remote_user: pi
-  become: true
+  remote_user: root
+  become: false
   become_method: sudo
   vars_files:
     - config.yml

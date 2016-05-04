@@ -2,8 +2,8 @@
 - name: Kubernetes Master
 
   hosts: master
-  remote_user: pi
-  become: true
+  remote_user: root
+  become: false
 
   roles:
   - etcd
@@ -16,8 +16,8 @@
 - name: Kubernetes Nodes
 
   hosts: nodes
-  remote_user: pi
-  become: true
+  remote_user: root
+  become: false
 
   roles:
   - role: flannel

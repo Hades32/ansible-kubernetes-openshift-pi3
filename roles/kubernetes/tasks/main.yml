@@ -26,5 +26,10 @@
   command: systemctl daemon-reload
   when: result|changed
 
-- name: Restart kubelet
-  service: name=kubelet enabled=yes state=restarted
+- name: Enable and start kubelet service
+  service: name=kubelet enabled=true state=started
+
+- name: Setup system parameters (boot, hosts, timzone)
+  include: skydns.yml
+  when: mode == 'master'
+
