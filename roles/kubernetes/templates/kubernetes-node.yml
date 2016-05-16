@@ -10,7 +10,7 @@ spec:
       args:
         - "/hyperkube"
         - "proxy"
-        - "--master=http://k8s-master:8080"
+        - "--master=http://{{ master_ip }}:8080"
         - "--v={{ debug_level }}"
       securityContext:
         privileged: true
