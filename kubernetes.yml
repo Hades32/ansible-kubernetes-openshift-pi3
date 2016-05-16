@@ -4,6 +4,8 @@
   hosts: master
   remote_user: root
   become: false
+  vars_files:
+    - internal_ips.yml
 
   roles:
   - etcd
@@ -18,6 +20,8 @@
   hosts: nodes
   remote_user: root
   become: false
+  vars_files:
+    - internal_ips.yml
 
   roles:
   - role: flannel
