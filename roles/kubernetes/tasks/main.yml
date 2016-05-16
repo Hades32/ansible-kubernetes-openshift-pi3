@@ -18,6 +18,17 @@
 - name: Setup profile
   template: src=kubernetes_profile.sh dest=/etc/profile.d/kubernetes.sh mode=0644
 
+- name: Check for ld-linux-armhf.so.3
+  stat: path=/lib/ld-linux-armhf.so.3
+  register: ld
+
+- name: Link ld-linux-armhf.so.3 --> ld-linux.so.3
+  file:
+    src: /lib/ld-linux-armhf.so.3
+    dest: /lib/ld-linux.so.3
+    state: link
+  when: ld.stat.exists
+
 - name: Install kubelet service definition
   template: src=kubelet.service dest=/lib/systemd/system/kubelet.service owner=root group=root mode=0644
   register: result
