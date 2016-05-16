@@ -13,8 +13,7 @@ IP_MASTER=$(./createServer.sh)
 echo $IP_MASTER >> hosts.master.tmp
 echo $IP_MASTER 'name=k8s-master' 'host_extra="master registry"' >> hosts.pis.tmp
 
-#TODO grab masters inernal IP for slaves
-#ip a show dev eth0
+echo master_ip: `./getMasterInternalIP.sh` >> internal_ips.yml
 
 for (( i=1; i<=$NUM_SLAVES; i++ )); do
     IP_NODE=$(./createServer.sh)
