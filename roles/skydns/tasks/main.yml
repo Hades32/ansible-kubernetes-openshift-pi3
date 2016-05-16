@@ -2,10 +2,6 @@
   template: src=skydns-rc-svc.yml dest=/etc/kubernetes/skydns-rc-svc.yml
   register: result
 
-- name: ensure api-server is running
-  command: for i in `seq 1 10`; do sleep 3 && curl -f localhost:8080 && break; done
-  when: result|changed
-
 - name: Remove previous controller & service (but ignore if failing)
   command: kubectl --namespace=kube-system delete rc,svc kube-dns
   ignore_errors: yes

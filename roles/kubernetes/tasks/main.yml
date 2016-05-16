@@ -39,3 +39,6 @@
 
 - name: Enable and start kubelet service
   service: name=kubelet enabled=true state=started
+
+- name: ensure api-server is running
+  command: "for i in `seq 1 10`; do sleep 3 && curl -f localhost:8080 && break; done"
