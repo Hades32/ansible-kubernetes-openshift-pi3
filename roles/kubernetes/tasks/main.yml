@@ -41,4 +41,4 @@
   service: name=kubelet enabled=true state=started
 
 - name: ensure api-server is running
-  command: "for i in `seq 1 10`; do sleep 3 && curl -f localhost:8080 && break; done"
+  shell: "for i in `seq 1 30`; do sleep 3 && curl -f {{ master_ip }}:8080 && break; done"
