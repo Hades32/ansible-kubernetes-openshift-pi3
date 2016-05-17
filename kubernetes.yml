@@ -26,6 +26,7 @@
     - internal_ips.yml
 
   roles:
+  - scw-base
   - role: flannel
     mode: node
   - docker
