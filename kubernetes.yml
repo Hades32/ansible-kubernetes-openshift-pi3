@@ -8,6 +8,7 @@
     - internal_ips.yml
 
   roles:
+  - scw-base
   - etcd
   - role: flannel
     mode: master
