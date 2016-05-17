@@ -1,0 +1,5 @@
+- name: ensure hosts file has newline at eof
+  shell: "echo >> /etc/hosts"
+
+- name: ensure hostname is registered
+  shell: "echo $(ip a show dev eth0 | grep 'inet 10' | sed 's/\/.*//' | sed 's/.*inet //') $(hostname) >> /etc/hosts"
